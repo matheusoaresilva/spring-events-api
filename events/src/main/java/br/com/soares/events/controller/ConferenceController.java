@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.annotation.Repeatable;
+import java.util.List;
 
 @RestController
 public class ConferenceController {
@@ -23,18 +24,23 @@ public class ConferenceController {
         return ResponseEntity.status(201).body(service.addConference(conference));
     }
 
-    @GetMapping("conferences/{id}")
+    @GetMapping("/conferences")
+    public ResponseEntity<List<Conference>> getAllConferences(){
+        return ResponseEntity.ok(service.getAllConferences());
+    }
+
+    @GetMapping("/conferences/{id}")
     public ResponseEntity<Conference> getById(@PathVariable Integer id){
         Conference conference = new Conference();
         conference.setId(id);
         return ResponseEntity.ok().body(service.getConferenceById(id));
     }
 
-    @GetMapping("conferences/{name}")
-    public ResponseEntity<Conference> getByName(@PathVariable String name){
-        Conference conference = new Conference();
-        conference.setName(name);
-        return ResponseEntity.ok().body(service.getConferenceByName(name));
-    }
+//    @GetMapping("/conferences/{name}")
+//    public ResponseEntity<Conference> getByName(@PathVariable(name = "name") String name){
+//        Conference conference = new Conference();
+//        conference.setName(name);
+//        return ResponseEntity.ok().body(service.getConferenceByName(name));
+//    }
 
 }

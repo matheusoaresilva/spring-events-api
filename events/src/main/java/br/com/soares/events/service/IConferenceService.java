@@ -9,6 +9,6 @@ import java.util.List;
 public interface IConferenceService{
     public Conference addConference(Conference conference);
     public Conference getConferenceById(Integer id);
-    public Conference getConferenceByName(String name);
+    public List<Conference> getAllConferences();
 
 }

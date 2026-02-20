@@ -6,6 +6,8 @@ import br.com.soares.events.repo.ConferenceRepo;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ConferenceServiceImpl implements IConferenceService{
@@ -28,10 +30,9 @@ public class ConferenceServiceImpl implements IConferenceService{
     }
 
     @Override
-    public Conference getConferenceByName(String name) {
-        return repo.findByName(name);
+    public List<Conference> getAllConferences() {
+        return repo.findAll();
     }
-
 
 
 }
