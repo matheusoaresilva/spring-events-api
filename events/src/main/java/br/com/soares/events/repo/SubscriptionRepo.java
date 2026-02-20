@@ -11,5 +11,6 @@ import java.util.Optional;
 
 public interface SubscriptionRepo extends ListCrudRepository<Subscription, SubscriptionID> {
     public List<Subscription> findByIdUser(User user);
-    public  Subscription findById(Integer id);
+
+    List<Subscription> findByIdSession(Session session);
 }

@@ -33,8 +33,9 @@ public class SubscriptionController {
     }
 
     @GetMapping("/subscriptions/session/{id}")
-    public ResponseEntity <Subscription> getSubscriptionById (@PathVariable Integer id){
-        Subscription subscription = service.getSubscriptionById(id);
-        return ResponseEntity.ok().body(subscription);
+    public ResponseEntity <List<Subscription>> getBySession (@PathVariable Integer id){
+        Session session = new Session();
+        session.setIdSession(id);
+        return ResponseEntity.ok(service.getAllBySession(session));
     }
 }

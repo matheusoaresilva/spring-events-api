@@ -1,7 +1,9 @@
 package br.com.soares.events.service;
 
+import br.com.soares.events.entity.Session;
 import br.com.soares.events.entity.Subscription;
 import br.com.soares.events.entity.User;
+import br.com.soares.events.exception.NotFoundException;
 import br.com.soares.events.repo.SubscriptionRepo;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +32,10 @@ public class SubscriptionServiceImpl implements ISubscriptionService {
         return repo.findByIdUser(user);
     }
 
-
     @Override
-    public Subscription getSubscriptionById(Integer id) {
-        return repo.findById(id);
+    public List<Subscription> getAllBySession(Session session) {
+        return repo.findByIdSession(session);
     }
 }
+
+  
